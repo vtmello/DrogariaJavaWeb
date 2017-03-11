@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<!DOCTYPE hibernate-configuration PUBLIC 
+		"-//Hibernate/Hibernate Configuration DTD//EN" 
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	
+    	<!-- Configurações de Conexão com o Banco de Dados -->
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.connection.password">Zacu@3827</property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/drogaria?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</property>
+		<property name="hibernate.connection.username">root</property>
+		
+		<!-- show mysql queries output in console -->
+		<property name="hibernate.show_sql">true</property>
+
+		<!-- Cria as tabelas do banco de dados -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+
+		<!-- dbcp connection pool configuration -->
+		<property name="hibernate.dbcp.initialSize">5</property>
+		<property name="hibernate.dbcp.maxTotal">20</property>
+		<property name="hibernate.dbcp.maxIdle">10</property>
+		<property name="hibernate.dbcp.minIdle">5</property>
+		<property name="hibernate.dbcp.maxWaitMillis">-1</property>
+
+		<!-- Mapeamento das Entidades -->
+		<mapping class="br.com.mais.drogaria.domain.Caixa" />
+		<mapping class="br.com.mais.drogaria.domain.Cidade" />
+		<mapping class="br.com.mais.drogaria.domain.Cliente" />
+		<mapping class="br.com.mais.drogaria.domain.Estado" />
+		<mapping class="br.com.mais.drogaria.domain.Fabricante" />
+		<mapping class="br.com.mais.drogaria.domain.Funcionario" />
+		<mapping class="br.com.mais.drogaria.domain.ItemVenda" />
+		<mapping class="br.com.mais.drogaria.domain.Movimentacao" />
+		<mapping class="br.com.mais.drogaria.domain.Pessoa" />
+		<mapping class="br.com.mais.drogaria.domain.Produto" />
+		<mapping class="br.com.mais.drogaria.domain.Usuario" />
+		<mapping class="br.com.mais.drogaria.domain.Venda" />
+	</session-factory>
+</hibernate-configuration>
