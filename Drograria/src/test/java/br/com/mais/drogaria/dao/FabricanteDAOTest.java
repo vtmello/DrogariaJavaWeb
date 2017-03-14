@@ -60,7 +60,7 @@ public class FabricanteDAOTest {
 			System.out.println("Registro não encontrado");		
 		}
 	}
-	
+	@Ignore
 	@Test
 	public void Editar() {
 		Long codigo = 10L;
@@ -79,6 +79,26 @@ public class FabricanteDAOTest {
 		} else {
 			System.out.println("Registro não encontrado");
 		}
+	}
+	@Ignore
+	@Test
+	public void Merge() {
+		//Merge inclui e/ou edita registro.
+		
+		/*Inclui registro no banco
+		 *
+		Fabricante fabricante = new Fabricante();
+		fabricante.setDescricao("Fabricante A");
+
+		FabricanteDAO fabricanteDAO = new FabricanteDAO();
+		fabricanteDAO.Merge(fabricante);*/
+		
+		//Edita registro no banco
+		FabricanteDAO fabricanteDAO = new FabricanteDAO();
+		Fabricante fabricante = fabricanteDAO.Buscar(1L);
+		
+		fabricante.setDescricao("Fabricante B");
+		fabricanteDAO.Merge(fabricante);
 	}
 	
 }

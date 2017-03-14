@@ -62,6 +62,7 @@ public class EstadoDAOTest {
 		}
 	}
 
+	@Ignore
 	@Test
 	public void Editar() {
 		Long codigo = 10L;

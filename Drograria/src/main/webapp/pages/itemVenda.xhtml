@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Itens Venda</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Itens Venda - Listagem">
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				paginator="true">
+				<f:facet name="header">
+					<p:commandButton value="Novo"
+						oncomplete="PF('dlgItensVenda').show();" />
+				</f:facet>
+
+				<p:column headerText="Produto">
+				</p:column>
+
+				<p:column headerText="Quantidade">
+				</p:column>
+
+				<p:column headerText="Preço Parcial">
+				</p:column>
+
+				<p:column headerText="Venda">
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	<p:dialog header="Item Venda - Cadastro" widgetVar="dlgItensVenda"
+		draggable="false" resizable="false" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Produto: " />
+				<p:selectOneMenu filter="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um cliente" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Venda: " />
+				<p:selectOneMenu filter="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um funcionário" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="quant" value="Quantidade" />
+				<p:inputText id="quant" maxlength="5" size="10" />
+
+
+				<h:outputLabel for="precoParcial" value="Preço Parcial"/>
+				<p:inputMask id="precoParcial" mask="R$ 99999,99" size="10" />
+
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" />
+				<p:commandButton value="Fechar" oncomplete="PF('dlgVendas').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+</h:body>
+</html>

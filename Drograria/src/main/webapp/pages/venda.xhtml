@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Vendas</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Vendas - Listagem">
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				paginator="true">
+				<f:facet name="header">
+					<p:commandButton value="Novo" oncomplete="PF('dlgVendas').show();" />
+				</f:facet>
+
+				<p:column headerText="Cliente">
+				</p:column>
+
+				<p:column headerText="Horario">
+				</p:column>
+
+				<p:column headerText="Preço Total">
+				</p:column>
+
+				<p:column headerText="Funcionário">
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	<p:dialog header="Vendas - Cadastro" widgetVar="dlgVendas" draggable="false"
+		resizable="false" modal="true">
+		<h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Cliente: " />
+				<p:selectOneMenu filter="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um cliente" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Funcionário: " />
+				<p:selectOneMenu filter="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um funcionário" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Horário: " />
+				<p:calendar timeOnly="true" pattern="HH:mm" size="10"/>
+
+				<p:outputLabel value="Preço Total" />
+					<p:inputMask mask="R$ 99999,99" size="10" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" />
+				<p:commandButton value="Fechar"
+					oncomplete="PF('dlgVendas').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+</h:body>
+</html>

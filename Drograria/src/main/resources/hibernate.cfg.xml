@@ -15,7 +15,7 @@
 		<property name="hibernate.show_sql">true</property>
 
 		<!-- Cria as tabelas do banco de dados -->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">validate</property>
 
 		<!-- dbcp connection pool configuration -->
 		<property name="hibernate.dbcp.initialSize">5</property>

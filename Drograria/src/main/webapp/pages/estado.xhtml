@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Estados</title>
+</h:head>
+<h:body>
+
+	<p:growl id="mensagem" />
+	<!-- Mensagem flutuante temporaria -->
+
+	<h:form>
+		<p:panel header="Estados - Listagem">
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				paginator="true" value="#{estadoBean.estados}" var="cursor" rows="3">
+				<!-- rows = Paginação da tabela -->
+				<!-- Listagem do Controle -->
+
+				<f:facet name="footer">
+					<p:commandButton value="Novo" oncomplete="PF('dlgEstados').show();"
+						actionListener="#{estadoBean.Novo()}"
+						update=":formCadastro:painel" />
+					<!-- Limpa campos ao apertar Novo -->
+				</f:facet>
+
+				<p:column headerText="Nome" sortBy="#{cursor.nome}"
+					filterBy="#{cursor.nome}">
+					<!-- sortBy = Ordenação da Lista; filterBy = Pesquisa da Lista-->
+					<h:outputText value="#{cursor.nome}" />
+				</p:column>
+
+				<p:column headerText="Sigla" sortBy="#{cursor.sigla}"
+					filterBy="#{cursor.sigla}">
+					<h:outputText value="#{cursor.sigla}" />
+				</p:column>
+
+				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-trash">
+						<p:confirm header="Confimação" message="Deseja excluir o estado?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<!-- Qualquer confimação da janela irá aparecer a janela -->
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check"></p:commandButton>
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close"></p:commandButton>
+			</p:confirmDialog>
+
+		</p:panel>
+	</h:form>
+
+	<p:dialog header="Estados - Cadastro" widgetVar="dlgEstados"
+		draggable="false" resizable="false" modal="true">
+		<h:form id="formCadastro">
+			<!-- Para usar AJAX tem que inserir um ID -->
+			<h:panelGrid id="painel" columns="2">
+				<p:outputLabel value="Nome: " />
+				<p:inputText maxlength="50" size="25"
+					value="#{estadoBean.estado.nome}" />
+
+				<p:outputLabel value="Sigla: " />
+				<p:inputText maxlength="2" size="10"
+					value="#{estadoBean.estado.sigla}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar"
+					actionListener="#{estadoBean.Salvar()}"
+					update=":mensagem :formCadastro:painel" />
+				<p:commandButton value="Fechar"
+					oncomplete="PF('dlgEstados').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

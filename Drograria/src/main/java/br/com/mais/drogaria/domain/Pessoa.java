@@ -2,6 +2,8 @@ package br.com.mais.drogaria.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,12 +25,22 @@ public class Pessoa extends GenericDomain {
 	private String cep;
 	@Column(nullable = false, length = 10)
 	private String complemento;
-	@Column(nullable = false)
+	@Column(nullable = false, length = 14)
 	private String telefone;
 	@Column(nullable = false, length = 14)
 	private String celular;
 	@Column(nullable = false, length = 100)
 	private String email;
+	
+	@OneToOne //Definindo a chave estrangeira com o relacionamento
+	@JoinColumn(nullable = false) //Personaliza característcas de uma chave estrageira
+	private Estado estado;
+	
+	@OneToOne //Definindo a chave estrangeira com o relacionamento
+	@JoinColumn(nullable = false) //Personaliza característcas de uma chave estrageira
+	private Cidade cidade;
+	
+	//Adicionar Cidade e estado
 
 	public String getNome() {
 		return nome;
@@ -116,6 +128,22 @@ public class Pessoa extends GenericDomain {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Estado getEstado() {
+		return estado;
+	}
+	
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+	
+	public Cidade getCidade() {
+		return cidade;
+	}
+	
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 }

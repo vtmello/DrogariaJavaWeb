@@ -87,6 +87,7 @@ public class CidadeDAOTest {
 		}
 	}
 	
+	@Ignore
 	@Test
 	public void Editar(){
 		Long codigoCidade = 7L;
